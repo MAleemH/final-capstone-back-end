@@ -6,10 +6,8 @@ ruby "3.2.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5"
 gem 'rack-cors', require: 'rack/cors'
-gem 'sprockets-rails'
 gem 'rswag'
 gem 'cancancan'
-gem 'jwt'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 gem 'dotenv-rails', groups: %i[development test]
