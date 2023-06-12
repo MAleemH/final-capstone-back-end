@@ -8,6 +8,7 @@ gem 'cancancan'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 7.0.5'
 gem 'rswag'
+gem 'rubocop', '>= 1.0', '< 2.0'
 # Use postgresql as the database for Active Record
 gem 'dotenv-rails', groups: %i[development test]
 gem 'pg', '~> 1.1'
