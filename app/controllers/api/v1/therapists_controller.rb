@@ -7,4 +7,12 @@ class Api::V1::TherapistsController < ApplicationController
             render json: @therapists
         end
     end
+    def show
+        @therapist = Therapist.find_by(id: params[id])
+        if @therapist.present?
+            render json: @therapist
+        else
+            render json: { error: "Therapist doesn't found!"}, status: 404
+        end
+    end
 end
