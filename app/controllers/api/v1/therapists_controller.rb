@@ -1,6 +1,6 @@
 class Api::V1::TherapistsController < ApplicationController
   before_action :authenticate_request
-
+  load_and_authorize_resource
   def index
     @therapists = Therapist.all
     if @therapists.empty?
