@@ -17,6 +17,15 @@ class Api::V1::AppointmentsController < ApplicationController
         end
     end
 
+    def create
+        @appointment = Appointment.new(appointment_params)
+        if @appointment.save
+            render json: @appointment, status: :created
+          else
+            render json: @appointment.errors, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def appointment_params
