@@ -15,4 +15,10 @@ class Api::V1::TherapistsController < ApplicationController
             render json: { error: "Therapist doesn't found!"}, status: 404
         end
     end
+
+    private
+
+    def therapist_params
+        params.require(:therapist).permit(:name, :email, :specialization, :phone, :photo, :availability, :address, :user_id)
+    end
 end
