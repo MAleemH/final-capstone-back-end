@@ -11,3 +11,11 @@ gem 'webdrivers'
 gem "rswag-specs"
 
 june 8
+
+june 13
+
+gem 'devise'
+gem 'jwt'
+gem 'devise-jwt'
+
+june 13
