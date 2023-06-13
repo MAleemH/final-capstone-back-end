@@ -16,4 +16,10 @@ class Api::V1::AppointmentsController < ApplicationController
             render json: { error: @appointment.errors.full_messages }, status: :unprocessable_entity
         end
     end
+
+    private
+
+    def appointment_params
+        params.require(:appointment).permit(:date, :status, :user_id, :therapist_id)
+    end
 end
