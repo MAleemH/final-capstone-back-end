@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate_request, except: [:sign_in, :create, :update]
+  before_action :authenticate_request, except: %i[sign_in create update]
   attr_reader :current_user
 
   private
@@ -7,6 +7,7 @@ class ApplicationController < ActionController::API
   def authenticate_request
     @current_user = authorize_token
     return if @current_user
+
     render json: { error: 'Unauthorized' }, status: :unauthorized
   end
 
@@ -31,10 +32,10 @@ class ApplicationController < ActionController::API
   end
 
   def decode_token(token)
-    @decoded_token = JWT.decode(token, ENV['SECRET_KEY_BASE'], true, algorithm: 'HS256').first
+    @decoded_token = JWT.decode(token, ENV.fetch('SECRET_KEY_BASE', nil), true, algorithm: 'HS256').first
   end
 
   def revoked_token?(token)
-    RevokedToken.exists?(token: token)
+    RevokedToken.exists?(token:)
   end
 end

@@ -1,6 +1,6 @@
 class Api::V1::PasswordsController < Devise::PasswordsController
   respond_to :json
-   # PUT  /api/v1/password
+  # PUT  /api/v1/password
   def update
     self.resource = resource_class.find_by(email: resource_params[:email])
 

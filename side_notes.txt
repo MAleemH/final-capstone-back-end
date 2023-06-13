@@ -17,5 +17,5 @@ june 13
 gem 'devise'
 gem 'jwt'
 gem 'devise-jwt'
-
+gem 'faker'
 june 13

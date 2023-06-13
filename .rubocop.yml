@@ -40,6 +40,8 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/SafeNavigation :
+  Enabled: false
 
 Layout/EndOfLine:
   Enabled: false

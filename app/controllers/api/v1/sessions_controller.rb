@@ -1,20 +1,22 @@
 class Api::V1::SessionsController < Devise::SessionsController
   respond_to :json
-# POST /api/v1/sign_in
-def create
-  resource = User.find_for_database_authentication(email: params[:user][:email])
-  return invalid_login_attempt unless resource
-  if resource.valid_password?(params[:user][:password])
-    sign_in(resource_name, resource)
-  if resource.authentication_token.nil?
-    resource.authentication_token = request.env['warden-jwt_auth.token']
-    resource.save
-  end
-    render json: { user: resource }, status: :created and return
+  # POST /api/v1/sign_in
+  def create
+    resource = User.find_for_database_authentication(email: params[:user][:email])
+    return invalid_login_attempt unless resource
+
+    if resource.valid_password?(params[:user][:password])
+      sign_in(resource_name, resource)
+      if resource.authentication_token.nil?
+        resource.authentication_token = request.env['warden-jwt_auth.token']
+        resource.save
+      end
+      render json: { user: resource }, status: :created and return
+    end
+
+    invalid_login_attempt
   end
 
-  invalid_login_attempt
-end
   # DELETE /api/v1/sign_out
   def destroy
     token = request.headers['Authorization'].to_s.gsub('Bearer ', '')
@@ -31,8 +33,8 @@ end
 
   protected
 
-  def jwt_revoked?(payload, token)
-    RevokedToken.exists?(token: token)
+  def jwt_revoked?(_payload, token)
+    RevokedToken.exists?(token:)
   end
 
   def invalid_login_attempt
