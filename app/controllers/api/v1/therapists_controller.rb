@@ -27,6 +27,7 @@ class Api::V1::TherapistsController < ApplicationController
     end
 
     def update
+        @therapist = Therapist.find_by(id: params[:id])
         if @therapist.update(therapist_params)
             render json: @therapist
         else
@@ -35,7 +36,7 @@ class Api::V1::TherapistsController < ApplicationController
     end
 
     def destroy
-        @therapist = Therapist..find_by(id: params[:id])
+        @therapist = Therapist.find_by(id: params[:id])
         if @therapist.destroy
             render json: { message: "Therapist deleted successfully!" }, status: :ok
         else
