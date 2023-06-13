@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :therapists
 
   validates :name, presence: true, uniqueness: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :role, presence: true
 
   def jwt_payload

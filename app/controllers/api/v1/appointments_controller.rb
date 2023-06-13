@@ -1,7 +1,7 @@
 class Api::V1::AppointmentsController < ApplicationController
   before_action :authenticate_request
   def index
-    @appointments = @current_user.appointments.all
+    @appointments = current_user.appointments.all
     if @appointments.empty?
       render json: { error: @appointments.errors.full_messages }, status: :unprocessable_entity
     else
@@ -10,7 +10,7 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = @current_user.appointments.find_by(id: params[:id])
+    @appointment = current_user.appointments.find_by(id: params[:id])
     if @appointment.present?
       render json: @appointment
     else
@@ -19,7 +19,7 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = @current_user.appointments.create(appointment_params)
+    @appointment = current_user.appointments.create(appointment_params)
     if @appointment.valid?
       render json: @appointment, status: :created
     else
@@ -28,7 +28,7 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = @current_user.appointments.find(params[:id])
+    @appointment = current_user.appointments.find(params[:id])
     if @appointment.destroy
       render json: { message: 'Appointment deleted successfully!' }, status: :ok
     else
