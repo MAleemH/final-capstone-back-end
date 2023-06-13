@@ -34,6 +34,15 @@ class Api::V1::TherapistsController < ApplicationController
         end
     end
 
+    def destroy
+        @therapist = Therapist..find_by(id: params[:id])
+        if @therapist.destroy
+            render json: { message: "Therapist deleted successfully!" }, status: :ok
+        else
+            render json: { error: @therapist.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def therapist_params
