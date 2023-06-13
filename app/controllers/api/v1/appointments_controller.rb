@@ -34,6 +34,15 @@ class Api::V1::AppointmentsController < ApplicationController
         end
     end
 
+    def destroy
+        @appointment = Appointment.find_by(id: params[:id])
+        if @appointment.destroy
+            render json: { message: "Appointment deleted successfully!" }, status: :ok
+        else
+            render json: { error: @appointment.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def appointment_params
