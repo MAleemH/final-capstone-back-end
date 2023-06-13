@@ -4,11 +4,12 @@ class Api::V1::SessionsController < Devise::SessionsController
 def create
   resource = User.find_for_database_authentication(email: params[:user][:email])
   return invalid_login_attempt unless resource
-
   if resource.valid_password?(params[:user][:password])
     sign_in(resource_name, resource)
+  if resource.authentication_token.nil?
     resource.authentication_token = request.env['warden-jwt_auth.token']
     resource.save
+  end
     render json: { user: resource }, status: :created and return
   end
 
