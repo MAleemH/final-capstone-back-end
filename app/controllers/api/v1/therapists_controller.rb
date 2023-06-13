@@ -26,6 +26,14 @@ class Api::V1::TherapistsController < ApplicationController
         end
     end
 
+    def update
+        if @therapist.update(therapist_params)
+            render json: @therapist
+        else
+            render json: @therapist.errors, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def therapist_params
