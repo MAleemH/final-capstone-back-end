@@ -1,4 +1,5 @@
 class Api::V1::TherapistsController < ApplicationController
+  before_action :authenticate_request
   def index
     @therapists = Therapist.all
     if @therapists.empty?
@@ -9,7 +10,7 @@ class Api::V1::TherapistsController < ApplicationController
   end
 
   def show
-    @therapist = Therapist.find_by(id: params[id])
+    @therapist =  Therapist.find_by(id: params[:id])
     if @therapist.present?
       render json: @therapist
     else
@@ -18,8 +19,8 @@ class Api::V1::TherapistsController < ApplicationController
   end
 
   def create
-    @therapist = Therapist.new(therapist_params)
-    if @therapist.save
+    @therapist = @current_user.therapists.create(therapist_params)
+    if @therapist.valid?
       render json: @therapist, status: created
     else
       render json: @therapist.errors, status: :unprocessable_entity
@@ -27,7 +28,7 @@ class Api::V1::TherapistsController < ApplicationController
   end
 
   def destroy
-    @therapist = Therapist.find_by(id: params[:id])
+     @therapist = @current_user.therapists.find(params[:id])
     if @therapist.destroy
       render json: { message: 'Therapist deleted successfully!' }, status: :ok
     else
