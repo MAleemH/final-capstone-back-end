@@ -26,14 +26,6 @@ class Api::V1::AppointmentsController < ApplicationController
         end
     end
 
-    def update
-        if @appointment.update(appointment_params)
-          render json: @appointment
-        else
-          render json: @appointment.errors, status: :unprocessable_entity
-        end
-    end
-
     def destroy
         @appointment = Appointment.find_by(id: params[:id])
         if @appointment.destroy

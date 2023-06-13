@@ -26,15 +26,6 @@ class Api::V1::TherapistsController < ApplicationController
         end
     end
 
-    def update
-        @therapist = Therapist.find_by(id: params[:id])
-        if @therapist.update(therapist_params)
-            render json: @therapist
-        else
-            render json: @therapist.errors, status: :unprocessable_entity
-        end
-    end
-
     def destroy
         @therapist = Therapist.find_by(id: params[:id])
         if @therapist.destroy
