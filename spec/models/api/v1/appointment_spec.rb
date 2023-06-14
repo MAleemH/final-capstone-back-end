@@ -33,5 +33,12 @@ RSpec.describe Appointment, type: :model do
     @appointment.date = nil
     expect(@appointment).to_not be_valid
   end
- 
+  it "is not valid without a user_id" do
+    @appointment.user_id = nil
+    expect(@appointment).to_not be_valid
+  end
+  it "is not valid without a therapist_id" do
+    @appointment.therapist_id = nil
+    expect(@appointment).to_not be_valid
+  end
 end
