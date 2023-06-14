@@ -23,5 +23,17 @@ RSpec.describe  Therapist, type: :model do
   it "is valid with valid attributes" do
     expect(@therapist).to be_valid
   end
- 
+  it "is not valid without a name" do
+    @therapist.name = nil
+    expect(@therapist).to_not be_valid
+  end
+  it "is not valid without a email" do
+    @therapist.email = nil
+    expect(@therapist).to_not be_valid
+  end
+  it "is not valid without a specialization" do
+    @therapist.specialization = nil
+    expect(@therapist).to_not be_valid
+  end
+  
 end
