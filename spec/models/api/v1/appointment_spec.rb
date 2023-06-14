@@ -26,5 +26,12 @@ RSpec.describe Appointment, type: :model do
       therapist_id: Therapist.all.sample.id
     )
    end
-  
+  it "is valid with valid attributes" do
+    expect(@appointment).to be_valid
+  end
+  it "is not valid without a date" do
+    @appointment.date = nil
+    expect(@appointment).to_not be_valid
+  end
+ 
 end
