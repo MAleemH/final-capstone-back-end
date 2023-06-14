@@ -35,5 +35,13 @@ RSpec.describe  Therapist, type: :model do
     @therapist.specialization = nil
     expect(@therapist).to_not be_valid
   end
+  it "is not valid without a phone" do
+    @therapist.phone = nil
+    expect(@therapist).to_not be_valid
+  end
+  it "is not valid without a photo" do
+    @therapist.photo = nil
+    expect(@therapist).to_not be_valid
+  end
   
 end
