@@ -3,10 +3,9 @@ class Therapist < ApplicationRecord
   has_many :appointments, dependent: :destroy
 
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :specialization, presence: true
-  validates :phone, presence: true
+  validates :phone, presence: true, uniqueness: true
   validates :photo, presence: true
-  validates :availability, presence: true
   validates :address, presence: true
 end

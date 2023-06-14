@@ -1,24 +1,40 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 
-#   Character.create(name: "Luke", movie: movies.first)
-# Create users
-# Assuming you have the necessary models defined (User, Therapist, Appointment)
+Appointment.destroy_all
+Therapist.destroy_all
+User.destroy_all
 
-# Create mock users
-User.create(name: "John Doe", email: "john@example.com")
-User.create(name: "Jane Smith", email: "jane@example.com")
+# create users account
 
-# Create mock therapists
-Therapist.create(name: "Dr. Sarah Johnson", email: "sarah@example.com", specialization: "Psychology", phone: "1234567890", photo: "http://example.com/photo.jpg", availability: true, address: "123 Main St", user_id: 1)
-Therapist.create(name: "Dr. David Wilson", email: "david@example.com", specialization: "Counseling", phone: "9876543210", photo: "http://example.com/photo2.jpg", availability: false, address: "456 Elm St", user_id: 2)
+4.times do
+   User.create!(
+    name: Faker::Name.unique.name,
+    email: Faker::Internet.unique.email,
+    password: "123456",
+    password_confirmation: "123456",
+    role: ['client','admin'].sample
+   )
+end
 
-# Create mock appointments
-Appointment.create(date: "2023-06-10", user_id: 1, therapist_id: 1)
-Appointment.create(date: "2023-06-12", user_id: 2, therapist_id: 2)
+4.times do
+    Therapist.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.unique.email,
+      specialization: Faker::Job.title,
+      phone: Faker::PhoneNumber.unique.cell_phone,
+      photo: Faker::Internet.url,
+      availability: Faker::Boolean.boolean,
+      address: Faker::Address.full_address,
+      user_id: User.all.sample.id
+    )
+end
 
-
+4.times do
+    Appointment.create!(
+      date: Faker::Date.between(from: '2021-01-01', to: '2021-12-31'),
+      status: 'scheduled',
+      user_id: User.all.sample.id,
+      therapist_id: Therapist.all.sample.id
+    )
+end
