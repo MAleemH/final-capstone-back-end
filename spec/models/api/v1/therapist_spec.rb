@@ -43,5 +43,8 @@ RSpec.describe  Therapist, type: :model do
     @therapist.photo = nil
     expect(@therapist).to_not be_valid
   end
-  
+  it "is not valid without a address" do
+    @therapist.address = nil
+    expect(@therapist).to_not be_valid
+  end
 end
