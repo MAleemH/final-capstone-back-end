@@ -1,5 +1,5 @@
 require 'rails_helper'
-​
+
 RSpec.describe 'Api::V1::Therapists', type: :request do
   before(:each) do
     @user =  User.create!(

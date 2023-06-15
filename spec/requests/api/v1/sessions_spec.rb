@@ -1,5 +1,5 @@
 require 'rails_helper'
-​
+
 RSpec.describe 'Api::V1::Sessions', type: :request do
   describe "User login end points" do
     before(:each) do
