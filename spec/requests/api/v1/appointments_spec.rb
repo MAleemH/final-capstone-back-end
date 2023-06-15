@@ -28,18 +28,18 @@ RSpec.describe 'Api::V1::Appointments', type: :request do
     @token = response.headers['Authorization']
   end
   describe 'appointment endpoints' do
-    it 'returns all appointments' do
+    it 'returns all appointments', :show_in_doc do
       get "/api/v1/users/#{@user['id']}/appointments", headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
-    it 'returns error message if token is not valid' do
+    it 'returns error message if token is not valid', :show_in_doc do
       token = nil
       get "/api/v1/users/#{@user['id']}/appointments", headers: { Authorization: token }
       expect(response).to have_http_status(:unauthorized)
     end
   end
   describe 'appointment show endpoints' do
-    it 'returns a appointment' do
+    it 'returns a appointment', :show_in_doc do
       get "/api/v1/users/#{@user['id']}/appointments/#{@appointment['id']}", headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
@@ -50,14 +50,14 @@ RSpec.describe 'Api::V1::Appointments', type: :request do
     end
   end
   describe 'appointment create endpoints' do
-    it 'return successful message if user is admin' do
+    it 'return successful message if user is admin', :show_in_doc do
       @user.update(role: 'admin')
       post "/api/v1/users/#{@user['id']}/appointments", params: { appointment: { date: Faker::Date.forward(days: 23),
                                                                                  user_id: @user.id,
                                                                                  therapist_id: @therapist.id } }, headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
-    it 'returns error message if token is not valid' do
+    it 'returns error message if token is not valid', :show_in_doc do
       token = nil
       post "/api/v1/users/#{@user['id']}/appointments", params: { appointment: { date: Faker::Date.forward(days: 23),
                                                                                  user_id: @user.id,
@@ -66,12 +66,12 @@ RSpec.describe 'Api::V1::Appointments', type: :request do
     end
   end
   describe 'appointment destroy endpoints' do
-    it 'returns successful message if user is admin' do
+    it 'returns successful message if user is admin', :show_in_doc do
       @user.update(role: 'admin')
       delete "/api/v1/users/#{@user['id']}/appointments/#{@appointment['id']}", headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
-    it 'returns error message if token is not valid' do
+    it 'returns error message if token is not valid', :show_in_doc do
       token = nil
       delete "/api/v1/users/#{@user['id']}/appointments/#{@appointment['id']}", headers: { Authorization: token }
       expect(response).to have_http_status(:unauthorized)
