@@ -21,6 +21,20 @@ RSpec.describe 'Api::V1::Sessions', type: :request do
         expect(response).to have_http_status(:unauthorized)
       end
     end
-    
+    describe "User logout end points" do
+        it "it return  successful logout message" do
+          post '/api/v1/users/sign_in', params: { user: {email: @user.email, password: @user.password } }
+          token = response.headers['Authorization']
+          delete '/api/v1/users/sign_out', headers: { 'Authorization': token }
+          expect(response).to have_http_status(:ok)
+        end
+       it "it return  error message if token is not valid" do
+        post '/api/v1/users/sign_in', params: { user: {email: @user.email, password: @user.password } }
+        token = response.headers['Authorization']
+        token= nil
+        delete '/api/v1/users/sign_out', headers: { 'Authorization': token }
+          expect(response).to have_http_status(:unauthorized)
+       end
+    end
   end
 end
