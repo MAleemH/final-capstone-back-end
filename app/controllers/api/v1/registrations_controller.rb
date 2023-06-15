@@ -1,13 +1,13 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
-  api :POST ,  '/v1/users' , 'Create a new user'
+  api :POST, '/v1/users', 'Create a new user'
   param :user, Hash, desc: 'User info', required: true do
     param :email, String, desc: 'User email', required: true
     param :password, String, desc: 'User password', required: true
     param :password_confirmation, String, desc: 'User password confirmation', required: true
     param :role, String, desc: 'User role', default_value: 'client'
-    param :name, String, desc: 'User name', default_value:'name'
+    param :name, String, desc: 'User name', default_value: 'name'
   end
   error code: 404, desc: 'User not created!'
   def create

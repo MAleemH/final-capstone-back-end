@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem 'apipie-rails'
 gem 'cancancan'
 gem 'devise'
 gem 'devise-jwt'
@@ -13,7 +14,6 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 7.0.5'
 gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'
-gem 'apipie-rails'
 # Use postgresql as the database for Active Record
 gem 'dotenv-rails', groups: %i[development test]
 gem 'pg', '~> 1.1'
