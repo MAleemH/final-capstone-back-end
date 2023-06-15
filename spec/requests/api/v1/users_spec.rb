@@ -1,7 +1,27 @@
 require 'rails_helper'
-
+​
 RSpec.describe 'Api::V1::Users', type: :request do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
+    before(:each) do
+      @user =  User.create!(
+        name: Faker::Name.unique.name,
+        email: Faker::Internet.unique.email,
+        password: "123456",
+        password_confirmation: "123456",
+        role: 'client'
+       )
+      post '/api/v1/users/sign_in', params: { user: {email: @user.email, password: @user.password } }
+      @token = response.headers['Authorization']
+    end
+    describe "User index end points" do
+      it 'it return all users' do
+        get '/api/v1/users/', headers: { 'Authorization': @token }
+        expect(response).to have_http_status(:ok)
+      end
+      it 'it return error message if token is not valid' do
+        token= nil
+        get '/api/v1/users/', headers: { 'Authorization': token }
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+    
 end
