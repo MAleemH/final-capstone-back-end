@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Counseling API (params in:formData)",
+    "title": "Counseling API",
     "description": "\n<p>The Counseling API allows clients to create therapist profiles and schedul appointments with their preferred therapists</p>\n&copy; 2023 zewdu erkyhun, Muhammad Aleem, Fitz Gerald, Emeka Emmanuel and Choice Osobor",
     "version": "1.0",
     "x-copyright": "&copy; 2023 zewdu erkyhun, Muhammad Aleem, Fitz Gerald, Emeka Emmanuel and Choice Osobor"
@@ -566,15 +566,23 @@
   "definitions": {
   },
   "schemes": [
-    "https"
+    "https",
+    "http"
   ],
   "tags": [
 
   ],
   "securityDefinitions": {
+    "BearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
   },
   "security": [
-
+    {
+      "BearerAuth": []
+    }
   ],
   "host": "localhost:3000"
 }
