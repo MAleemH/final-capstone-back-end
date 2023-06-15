@@ -70,5 +70,16 @@ RSpec.describe 'Api::V1::Therapists', type: :request do
             expect(response).to have_http_status(:unauthorized)
       end
   end
-  
+  describe 'therapist delete endpoints' do
+      it 'return successful message if user is admin' do
+        @user.update(role: 'admin')
+        delete "/api/v1/users/#{@user['id']}/therapists/#{@therapist['id']}", headers: { Authorization: @token }
+        expect(response).to have_http_status(:success)
+      end
+      it 'returns error message if token is not valid' do
+          token = nil
+          delete "/api/v1/users/#{@user['id']}/therapists/#{@therapist['id']}", headers: { Authorization: token }
+          expect(response).to have_http_status(:unauthorized)
+      end
+  end
 end
