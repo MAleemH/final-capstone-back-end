@@ -37,5 +37,16 @@ RSpec.describe 'Api::V1::Appointments', type: :request do
             expect(response).to have_http_status(:unauthorized)
         end
     end
-    
+    describe 'appointment show endpoints' do
+        it 'returns a appointment' do
+          get "/api/v1/users/#{@user['id']}/appointments/#{@appointment['id']}", headers: { Authorization: @token }
+          expect(response).to have_http_status(:success)
+        end
+        it 'returns error message if token is not valid' do
+            token = nil
+            get "/api/v1/users/#{@user['id']}/appointments/#{@appointment['id']}", headers: { Authorization: token }
+            expect(response).to have_http_status(:unauthorized)
+        end
+    end
+   
 end
