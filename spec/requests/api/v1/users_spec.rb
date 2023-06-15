@@ -34,5 +34,16 @@ RSpec.describe 'Api::V1::Users', type: :request do
         expect(response).to have_http_status(:unauthorized)
       end
     end
-    
+    describe "user destroy end points" do
+        it  "it return  successful message if user is admin" do
+           @user.update(role: 'admin')
+            delete "/api/v1/users/#{@user['id']}", headers: { 'Authorization': @token }
+            expect(response).to have_http_status(:ok)
+        end
+        it "it return  error message if token is not valid" do
+          token= nil
+          delete "/api/v1/users/#{@user['id']}", headers: { 'Authorization': token }
+          expect(response).to have_http_status(:unauthorized)
+        end
+    end
 end
