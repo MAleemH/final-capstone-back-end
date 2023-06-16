@@ -23,29 +23,29 @@ RSpec.describe 'Api::V1::Therapists', type: :request do
     @token = response.headers['Authorization']
   end
   describe 'therapist endpoints' do
-    it 'returns all therapists' do
+    it 'returns all therapists', :show_in_doc do
       get "/api/v1/users/#{@user.id}/therapists", headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
-    it 'returns error message if token is not valid' do
+    it 'returns error message if token is not valid', :show_in_doc do
       token = nil
       get "/api/v1/users/#{@user.id}/therapists", headers: { Authorization: token }
       expect(response).to have_http_status(:unauthorized)
     end
   end
   describe 'therapist show endpoints' do
-    it 'returns a therapist' do
+    it 'returns a therapist', :show_in_doc do
       get "/api/v1/users/#{@user['id']}/therapists/#{@therapist['id']}", headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
-    it 'returns error message if token is not valid' do
+    it 'returns error message if token is not valid', :show_in_doc do
       token = nil
       get "/api/v1/users/#{@user['id']}/therapists/#{@therapist['id']}", headers: { Authorization: token }
       expect(response).to have_http_status(:unauthorized)
     end
   end
   describe 'therapist create endpoints' do
-    it 'return successful message if user is admin' do
+    it 'return successful message if user is admin', :show_in_doc do
       @user.update(role: 'admin')
       post "/api/v1/users/#{@user['id']}/therapists", params: { therapist: { name: Faker::Name.name,
                                                                              email: Faker::Internet.unique.email,
@@ -57,7 +57,7 @@ RSpec.describe 'Api::V1::Therapists', type: :request do
                                                                              user_id: @user.id } }, headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
-    it 'returns error message if token is not valid' do
+    it 'returns error message if token is not valid', :show_in_doc do
       token = nil
       post "/api/v1/users/#{@user['id']}/therapists", params: { therapist: { name: Faker::Name.name,
                                                                              email: Faker::Internet.unique.email,
@@ -71,12 +71,12 @@ RSpec.describe 'Api::V1::Therapists', type: :request do
     end
   end
   describe 'therapist delete endpoints' do
-    it 'return successful message if user is admin' do
+    it 'return successful message if user is admin', :show_in_doc do
       @user.update(role: 'admin')
       delete "/api/v1/users/#{@user['id']}/therapists/#{@therapist['id']}", headers: { Authorization: @token }
       expect(response).to have_http_status(:success)
     end
-    it 'returns error message if token is not valid' do
+    it 'returns error message if token is not valid', :show_in_doc do
       token = nil
       delete "/api/v1/users/#{@user['id']}/therapists/#{@therapist['id']}", headers: { Authorization: token }
       expect(response).to have_http_status(:unauthorized)

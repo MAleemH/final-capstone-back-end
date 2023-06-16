@@ -1,0 +1,1144 @@
+{
+  "appointments#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/123/appointments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "appointment[date]=2023-06-22&appointment[user_id]=123&appointment[therapist_id]=77",
+      "response_data": {
+        "id": 40,
+        "date": "2023-06-22",
+        "status": "scheduled",
+        "user_id": 123,
+        "therapist_id": 77,
+        "created_at": "2023-06-15T17:02:32.177Z",
+        "updated_at": "2023-06-15T17:02:32.177Z"
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/124/appointments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "appointment[date]=2023-07-04&appointment[user_id]=124&appointment[therapist_id]=78",
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "appointments#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/125/appointments/42",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "message": "Appointment deleted successfully!"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/126/appointments/43",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "appointments#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/119/appointments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 35,
+          "date": "2023-07-01",
+          "status": "scheduled",
+          "user_id": 119,
+          "therapist_id": 73,
+          "created_at": "2023-06-15T17:02:31.795Z",
+          "updated_at": "2023-06-15T17:02:31.795Z"
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/120/appointments",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "appointments#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/121/appointments/37",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "id": 37,
+        "date": "2023-07-01",
+        "status": "scheduled",
+        "user_id": 121,
+        "therapist_id": 75,
+        "created_at": "2023-06-15T17:02:32.046Z",
+        "updated_at": "2023-06-15T17:02:32.046Z"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/122/appointments/38",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "passwords#update": [
+    {
+      "verb": "PUT",
+      "path": "/api/v1/users/password",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=shantelle.swaniawski%40kirlin.example&user[password]=1234567&user[password_confirmation]=1234567",
+      "response_data": {
+        "message": "Your password has been successfully reset"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/api/v1/users/password",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=z%40gmail.com&user[password]=1234567&user[password_confirmation]=1234567",
+      "response_data": {
+        "error": "Invalid user or password confirmation"
+      },
+      "code": 422,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "registrations#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[name]=Milan+Christiansen+DO&user[email]=margit.nicolas%40maggio-larkin.example&user[password]=123456&user[password_confirmation]=123456&user[role]=client",
+      "response_data": {
+        "user": {
+          "id": 147,
+          "name": "Milan Christiansen DO",
+          "email": "margit.nicolas@maggio-larkin.example",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:33.166Z",
+          "updated_at": "2023-06-15T17:02:33.174Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZWQ2MmUxOC1iMTFlLTRmMjQtYmVjNy0xNWQ2MjMyYjg0NzkiLCJzdWIiOiIxNDciLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUzLCJleHAiOjE2ODgxNDQ1NTN9.ITRs6_6DSfrr-K-dAtMZ9ppAwkGLKpoOShHXWzJIa4o",
+          "jti": "66f38a89-1f6c-47cd-ad08-ddf7a2bbd0a8"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=doug.fisher%40rogahn.example&user[password]=123456&user[password_confirmation]=123456&user[role]=client",
+      "response_data": {
+        "error": "Name can't be blank"
+      },
+      "code": 422,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "sessions#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=marisela%40casper-willms.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 119,
+          "name": "Maryland Nolan",
+          "email": "marisela@casper-willms.test",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:31.733Z",
+          "updated_at": "2023-06-15T17:02:31.929Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkYmM1ZTI3YS0xNTQwLTRkZjMtOGMzOS02NzFiNzA2Y2VkOWQiLCJzdWIiOiIxMTkiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUxLCJleHAiOjE2ODgxNDQ1NTF9.jH7Svask_M7Jh6D9Rchx89SeSPIyVrbUhzvCFeZweks",
+          "jti": "2c5ce583-ab54-45c0-9df3-78539ec79177"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=arminda%40kautzer.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 120,
+          "name": "Lorinda Murphy",
+          "email": "arminda@kautzer.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:31.985Z",
+          "updated_at": "2023-06-15T17:02:32.010Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5MzBhNjk1Ni01Y2RmLTRmZjYtOWQ1OS0zODI1YWU0MjQxZTQiLCJzdWIiOiIxMjAiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.eKz2NC5eY-IKAiwJpdWq6fXvG0_AYT20smvsse6bXik",
+          "jti": "e736c4af-1c0a-4901-b3c7-bc4f38532c87"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=stephen%40hintz.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 121,
+          "name": "Rueben Keeling",
+          "email": "stephen@hintz.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.032Z",
+          "updated_at": "2023-06-15T17:02:32.059Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzOGYzZjVlZC0zYWMzLTRjZDktYjQ1NS03YTUwMGYyZGY4ZTkiLCJzdWIiOiIxMjEiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.x4f-VNs_JgH7fDCOtc7lYzBTWIOyRN9mKpgrHmpJ9Mo",
+          "jti": "a5f7f23f-3977-4a77-892c-7fa818947e96"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=katia.goyette%40corwin.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 122,
+          "name": "Freeman Cruickshank",
+          "email": "katia.goyette@corwin.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.084Z",
+          "updated_at": "2023-06-15T17:02:32.114Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3N2Q4MDFlYi00ZTliLTQxNmItYjIzZS1jZWJjMjU1YzZkZGQiLCJzdWIiOiIxMjIiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.yVU6xGDcZCxhPVwQGx77sXlcNXs3blXH-Q7_-aZHG08",
+          "jti": "bc0ed4c9-c1f2-4fbf-9485-7560bbc72ee4"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=ardath%40gorczany.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 123,
+          "name": "Pasquale Frami",
+          "email": "ardath@gorczany.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.132Z",
+          "updated_at": "2023-06-15T17:02:32.160Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3ZjgyM2ZmNy1lOWVlLTQzNDgtYTU0Yy04ODc5NTIyZjRhNGUiLCJzdWIiOiIxMjMiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.t3-5Go6C1Vqg09jgROOBpyv3tJV8Fez_QVVYiTMkphk",
+          "jti": "4f205374-63d9-47c1-841a-f58877504e74"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=nikki_volkman%40runte-miller.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 124,
+          "name": "Ulysses Davis",
+          "email": "nikki_volkman@runte-miller.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.191Z",
+          "updated_at": "2023-06-15T17:02:32.219Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NzlmMWRkMC1iNjQ0LTRmMDktODY0Yi00MmYzY2VlZTcxZTEiLCJzdWIiOiIxMjQiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.EN9gMGVQcUzw9H47U_GYv-EP1mWtk017RIZXz-oICWM",
+          "jti": "07dee452-76a6-44ac-80ae-8147d652d35a"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=curtis.toy%40schulist-casper.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 125,
+          "name": "Dr. Hoyt Osinski",
+          "email": "curtis.toy@schulist-casper.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.239Z",
+          "updated_at": "2023-06-15T17:02:32.265Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwY2ZiNzlkMy1lYjRjLTRhNDktYmYwMi1mMzBjZTJkM2Y3MTkiLCJzdWIiOiIxMjUiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.tI3cB9TKoN3W5GMZEw9-gz7xiFJd7YkCimbsrfv0izk",
+          "jti": "cb18f69d-ea7a-407d-ac29-7521504c8a2c"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=diamond.hahn%40koelpin.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 126,
+          "name": "Yoshiko Roberts",
+          "email": "diamond.hahn@koelpin.test",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.296Z",
+          "updated_at": "2023-06-15T17:02:32.324Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZWQ3NDJiYy1lZWM1LTRlY2QtOTZkNi03Yjk2NGMxNjZlYTYiLCJzdWIiOiIxMjYiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.v6JJ8iKH-iFLXjWNmDuXl9T2T3Oi9qybE7moxj-CrTc",
+          "jti": "7919481c-2fe0-4912-889b-ca77c57b171b"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=berniece%40simonis-haag.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 129,
+          "name": "Stuart Casper",
+          "email": "berniece@simonis-haag.test",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:32.389Z",
+          "updated_at": "2023-06-15T17:02:32.402Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4ZWNkNTFhMC1kNzYyLTRlYzEtOGFiOS1iYTM2OWFhMTgyYTMiLCJzdWIiOiIxMjkiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.lW_LHcp-N3O3FsOhDcqS4ZnaKgEbkQ7AUovlypUY6P8",
+          "jti": "475f7549-be7c-4fe4-a118-68425fdd3399"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=quyen%40breitenberg-beahan.example&user[password]=1234567",
+      "response_data": {
+        "error": "Invalid email or password"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=lara%40dickens.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 131,
+          "name": "Santo Reynolds",
+          "email": "lara@dickens.test",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:32.437Z",
+          "updated_at": "2023-06-15T17:02:32.453Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3M2Q0MmYxOS01MzczLTQ3YzMtYjlhNi1iMzkwN2JmODE2MTYiLCJzdWIiOiIxMzEiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9._0_TjmUrGPMY59J4246yGL7uVBMuErPSVO37EvBB9A0",
+          "jti": "158fd803-27bb-457c-b131-80afc3b1357a"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=jule.robel%40schoen-connelly.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 132,
+          "name": "Margene Ziemann",
+          "email": "jule.robel@schoen-connelly.test",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:32.501Z",
+          "updated_at": "2023-06-15T17:02:32.514Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4YTYwZTFmNS04ZWEzLTRkNTktODZiMC01MGI5NDZmYmVlM2IiLCJzdWIiOiIxMzIiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.59nC1kB6ydyfOBYp_XHuCLjv7D86XjxeYw9Se1ae5BM",
+          "jti": "e82fdb46-4b26-4049-9947-13bdff7feae0"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=rubin%40rodriguez.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 133,
+          "name": "Cheryll DuBuque",
+          "email": "rubin@rodriguez.test",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.551Z",
+          "updated_at": "2023-06-15T17:02:32.575Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0NDZjZTIwOS02YzcwLTQ3ZWYtOThhZi02ZjdiNDA5MjJmYWUiLCJzdWIiOiIxMzMiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.t2z4vzuOAAErI36Bh6MlR4n7DqTe9BOpLqXQkhiEpsQ",
+          "jti": "f857b923-057b-4fd6-b9cd-347b001e5239"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=derek.kerluke%40dare.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 134,
+          "name": "Derick Moen",
+          "email": "derek.kerluke@dare.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.604Z",
+          "updated_at": "2023-06-15T17:02:32.624Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlNGJhYmNjZC0yOTlmLTRkMTItOGJjMi1mMmM5YzJjNmVlNTciLCJzdWIiOiIxMzQiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.nqjN-M1S8K-zVXyfnDrLLnhSYK8_a-jjaVl_E0KV080",
+          "jti": "75e5538a-886b-4db0-bf3b-a77d4cfbe1c9"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=beau.christiansen%40botsford-wunsch.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 135,
+          "name": "Randell Hand",
+          "email": "beau.christiansen@botsford-wunsch.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.648Z",
+          "updated_at": "2023-06-15T17:02:32.671Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZjcxYmEyZC1lZmNjLTQzNDgtODRlZi1jNzY5MGM2MDlkZGUiLCJzdWIiOiIxMzUiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.OKQkcgvxeCqmV0IAA23CQ_3AKSnDfPjd64TwD80-O2M",
+          "jti": "58fcd5a8-4d68-44b6-8d5f-187080be24e0"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=kimi%40yost.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 136,
+          "name": "Rev. Micheal Baumbach",
+          "email": "kimi@yost.test",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.697Z",
+          "updated_at": "2023-06-15T17:02:32.717Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNjg4ZGEwZS1iZDE1LTRiMTktYjFjOC1hOTYwNTFhNWMxMjciLCJzdWIiOiIxMzYiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.0HvNj6tJgwCz13J2j6M5zmHiVDise9ZP_4DZv9KRIsE",
+          "jti": "f9a0608e-b026-4d61-915e-4d59afe169cd"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=arlie%40friesen.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 137,
+          "name": "Bobbie Schowalter",
+          "email": "arlie@friesen.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.735Z",
+          "updated_at": "2023-06-15T17:02:32.757Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDk2NjdhNS0xNDRkLTRjOTItOGM0Ny00ZDQxMDM2NDY5NDUiLCJzdWIiOiIxMzciLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.ra3tQiu90jdeW7eg5vV5cD5ZmaDOURVjQ61RTGQstEs",
+          "jti": "ccd6ce74-addf-4a2a-8aac-d146d55dd129"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=emmaline.kessler%40leuschke.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 138,
+          "name": "Gay Jerde",
+          "email": "emmaline.kessler@leuschke.test",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.796Z",
+          "updated_at": "2023-06-15T17:02:32.817Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwYTI2NzJkYy05OGY0LTQxZDktOTY3Yi1iOGJhMzdiMzUxNzgiLCJzdWIiOiIxMzgiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.6DjYSnuHnURIjqwc6QtrNVi_SKtIj3jpe2l8xf2klds",
+          "jti": "cd4d69a2-c104-418b-8e2b-ccc1f3db1719"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=tracey_koss%40effertz.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 139,
+          "name": "James O'Kon",
+          "email": "tracey_koss@effertz.example",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.839Z",
+          "updated_at": "2023-06-15T17:02:32.861Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkYzEwMGI1NC00MDE2LTQ3ZTgtYWYwNi03M2JmNWQ3MjU3ZDkiLCJzdWIiOiIxMzkiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.pQZb72XEhlx0kASpeKPUC_4iEBVYnHP4wTBaTbiTm2Y",
+          "jti": "aad2557b-7bb4-4759-b405-d73a47b02061"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=connie.olson%40rodriguez-considine.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 140,
+          "name": "Rep. Catharine Rau",
+          "email": "connie.olson@rodriguez-considine.test",
+          "role": "admin",
+          "created_at": "2023-06-15T17:02:32.896Z",
+          "updated_at": "2023-06-15T17:02:32.920Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZGM4MGFhNC1lNmRjLTQ1MTItODk1MS0xNmEyYjdhMjYzNTIiLCJzdWIiOiIxNDAiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.HgJkqn3pUuJ4LIaC26TMPINIDSO19Me_nwZFH6JXVbc",
+          "jti": "f7109bf2-ac29-4aac-a224-515b5fa7e984"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=lawerence_corkery%40johns.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 141,
+          "name": "Houston Lynch Esq.",
+          "email": "lawerence_corkery@johns.example",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:32.936Z",
+          "updated_at": "2023-06-15T17:02:32.950Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkZDRlZGNiYS05NmU3LTQ0MTYtODJmNy1hNmQ5YWRjZDFjZTQiLCJzdWIiOiIxNDEiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.CgZ69IvEGgf3KnvCnD3HGLQenrEZsVKZyEj03bvhZBE",
+          "jti": "1633107f-4ae6-4b5f-82be-7d8911f49eff"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=jimmie%40pfannerstill.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 142,
+          "name": "Werner Nikolaus Jr.",
+          "email": "jimmie@pfannerstill.example",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:32.979Z",
+          "updated_at": "2023-06-15T17:02:32.992Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI2OThiMWQ2Yi1iOTFmLTQ5MGItOWE5OC0yNDY3Y2I1ZjNmMGUiLCJzdWIiOiIxNDIiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.6Dl0jOyek84fd9Sv2ka_O6LzC4R2pFTJrzE_dFVen5M",
+          "jti": "c52ec59e-b008-47f9-9054-33313a189531"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=georgetta%40emmerich-wintheiser.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 143,
+          "name": "Veda Littel",
+          "email": "georgetta@emmerich-wintheiser.test",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:33.013Z",
+          "updated_at": "2023-06-15T17:02:33.026Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlNzQyZDEyYy1iOTViLTQ0M2MtYjlhOC1kZGQ3ZTBiODVmMjgiLCJzdWIiOiIxNDMiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUzLCJleHAiOjE2ODgxNDQ1NTN9.jXDZOSBUHSDzwqMhb5_7995ldUeFbEFmLjD1Px1fnUI",
+          "jti": "ff857ccc-6401-448f-a6a3-fc47b55bd8cf"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=jeremiah%40hoeger.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 144,
+          "name": "Katharina Parker",
+          "email": "jeremiah@hoeger.test",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:33.054Z",
+          "updated_at": "2023-06-15T17:02:33.067Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyOGViNmMxMy1lZWFiLTRiNjAtOTc2My0wNjM2NGYwZWNlYWEiLCJzdWIiOiIxNDQiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUzLCJleHAiOjE2ODgxNDQ1NTN9.kimZwoFxCq-yGv24ZlZoqEYOxf-e9GhdgxgmNXm0hYY",
+          "jti": "11401f60-98ec-46fa-b63a-a7cc41410120"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=marcelo%40little.example&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 145,
+          "name": "Kraig Kirlin Jr.",
+          "email": "marcelo@little.example",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:33.085Z",
+          "updated_at": "2023-06-15T17:02:33.098Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1ZTEzOTMwNC0yZGJlLTQ2ZjItYjUyMS03YWEzMzFiYTI0ZmUiLCJzdWIiOiIxNDUiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUzLCJleHAiOjE2ODgxNDQ1NTN9.6ZuuhJ9G8naMfFl5eusbzNOCY8U0EctPbjmu_iVfrZM",
+          "jti": "07267843-e8ee-40b2-be60-b53d91bf9492"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=apryl_beatty%40lynch.test&user[password]=123456",
+      "response_data": {
+        "user": {
+          "id": 146,
+          "name": "Johnny Bartell",
+          "email": "apryl_beatty@lynch.test",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:33.128Z",
+          "updated_at": "2023-06-15T17:02:33.141Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlZTU1NTU0Mi03NzdlLTRkNjUtOTRkNC0wYmJhNmVhZGU4ZTgiLCJzdWIiOiIxNDYiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUzLCJleHAiOjE2ODgxNDQ1NTN9.RjSETp_rMMc9vJ4Ix_3fuKAedFD7eTTxR3i06P63Ujo",
+          "jti": "f06b412d-99e6-4c56-9ed3-da50c9260f10"
+        }
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "sessions#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/sign_out",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "message": "Logged out successfully"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/sign_out",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "therapists#create": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/137/therapists",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "therapist[name]=Lindsay+Kilback&therapist[email]=eugene.mann%40blick.test&therapist[specialization]=Internal+Education+Producer&therapist[phone]=%28756%29+865-0468&therapist[photo]=http%3A%2F%2Fbernhard-altenwerth.example%2Falonso.green&therapist[availability]=false&therapist[address]=Suite+763+9548+Simonis+Springs%2C+New+Shaneka%2C+KY+29110-8144&therapist[user_id]=137",
+      "response_data": {
+        "id": 86,
+        "name": "Lindsay Kilback",
+        "email": "eugene.mann@blick.test",
+        "specialization": "Internal Education Producer",
+        "phone": "(756) 865-0468",
+        "photo": "http://bernhard-altenwerth.example/alonso.green",
+        "availability": false,
+        "address": "Suite 763 9548 Simonis Springs, New Shaneka, KY 29110-8144",
+        "user_id": 137,
+        "created_at": "2023-06-15T17:02:32.779Z",
+        "updated_at": "2023-06-15T17:02:32.779Z"
+      },
+      "code": 201,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/138/therapists",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "therapist[name]=Johnsie+Rolfson&therapist[email]=willy_dickens%40schimmel-carroll.test&therapist[specialization]=Marketing+Facilitator&therapist[phone]=153-920-7824&therapist[photo]=http%3A%2F%2Fjast-welch.example%2Ffoster&therapist[availability]=true&therapist[address]=85274+Ebert+Groves%2C+Lake+Kathleen%2C+MN+93313&therapist[user_id]=138",
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "therapists#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/139/therapists/88",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "message": "Therapist deleted successfully!"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/140/therapists/89",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "therapists#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/133/therapists",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 81,
+          "name": "Thanh Ratke LLD",
+          "email": "rickey.reichel@heaney.test",
+          "specialization": "Real-Estate Technician",
+          "phone": "501-361-6303",
+          "photo": "http://gleason-schmidt.test/madelene",
+          "availability": false,
+          "address": "4454 Willms Vista, Starktown, NC 93287-4021",
+          "user_id": 133,
+          "created_at": "2023-06-15T17:02:32.561Z",
+          "updated_at": "2023-06-15T17:02:32.561Z"
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/134/therapists",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "therapists#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/135/therapists/83",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "id": 83,
+        "name": "Albert Bechtelar",
+        "email": "nenita.weber@jerde-wunsch.example",
+        "specialization": "Chief Agent",
+        "phone": "166.996.0744",
+        "photo": "http://rau.example/rosario",
+        "availability": false,
+        "address": "Apt. 166 1213 Kulas Roads, Bridgetmouth, SC 21462",
+        "user_id": 135,
+        "created_at": "2023-06-15T17:02:32.656Z",
+        "updated_at": "2023-06-15T17:02:32.656Z"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/136/therapists/84",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "users#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/145",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "message": "User successfully deleted!"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/api/v1/users/146",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "users#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 141,
+          "name": "Houston Lynch Esq.",
+          "email": "lawerence_corkery@johns.example",
+          "role": "client",
+          "created_at": "2023-06-15T17:02:32.936Z",
+          "updated_at": "2023-06-15T17:02:32.950Z",
+          "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkZDRlZGNiYS05NmU3LTQ0MTYtODJmNy1hNmQ5YWRjZDFjZTQiLCJzdWIiOiIxNDEiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUyLCJleHAiOjE2ODgxNDQ1NTJ9.CgZ69IvEGgf3KnvCnD3HGLQenrEZsVKZyEj03bvhZBE",
+          "jti": "1633107f-4ae6-4b5f-82be-7d8911f49eff"
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ],
+  "users#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/143",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "id": 143,
+        "name": "Veda Littel",
+        "email": "georgetta@emmerich-wintheiser.test",
+        "role": "client",
+        "created_at": "2023-06-15T17:02:33.013Z",
+        "updated_at": "2023-06-15T17:02:33.026Z",
+        "authentication_token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlNzQyZDEyYy1iOTViLTQ0M2MtYjlhOC1kZGQ3ZTBiODVmMjgiLCJzdWIiOiIxNDMiLCJzY3AiOiJhcGlfdjFfdXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg2ODQ4NTUzLCJleHAiOjE2ODgxNDQ1NTN9.jXDZOSBUHSDzwqMhb5_7995ldUeFbEFmLjD1Px1fnUI",
+        "jti": "ff857ccc-6401-448f-a6a3-fc47b55bd8cf"
+      },
+      "code": 200,
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/144",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": "Unauthorized"
+      },
+      "code": 401,
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ]
+}
