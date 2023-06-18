@@ -52,11 +52,12 @@ class Api::V1::TherapistsController < ApplicationController
   param :id, :number, desc: 'id of the requested therapist', required: true
   error code: 404, desc: 'Therapist not deleted!'
   def destroy
-    @therapist = current_user.therapists.find(params[:id])
+    authorize! :destroy, Therapist
+    @therapist = Therapist.find(params[:id])
     if @therapist.destroy
       render json: { message: 'Therapist deleted successfully!' }, status: :ok
     else
-      render json: { error: @therapist.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: 'Failed to delete the therapist.' }, status: :unprocessable_entity
     end
   end
 

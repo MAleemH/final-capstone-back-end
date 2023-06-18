@@ -5,9 +5,14 @@ class Api::V1::AppointmentsController < ApplicationController
   param :user_id, :number, desc: 'id of the requested login user', required: true
   error code: 404, desc: 'Appointments not found!'
   def index
-    @appointments = current_user.appointments.all
+    if current_user.role == 'admin'
+      @appointments = Appointment.all
+    else
+      @appointments = current_user.appointments
+    end
+
     if @appointments.empty?
-      render json: { error: @appointments.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: 'No appointments found.' }, status: :unprocessable_entity
     else
       render json: @appointments
     end
@@ -18,8 +23,8 @@ class Api::V1::AppointmentsController < ApplicationController
   param :id, :number, desc: 'id of the requested appointment', required: true
   error code: 404, desc: 'Appointment not found!'
   def show
-    @appointment = current_user.appointments.find_by(id: params[:id])
-    if @appointment.present?
+    @appointment =Appointment.find_by(id: params[:id])
+    if @appointment.present? && (current_user.role == 'admin' || @appointment.user_id == current_user.id)
       render json: @appointment
     else
       render json: { error: @appointment.errors.full_messages }, status: :unprocessable_entity
@@ -49,11 +54,12 @@ class Api::V1::AppointmentsController < ApplicationController
   param :id, :number, desc: 'id of the requested appointment', required: true
   error code: 404, desc: 'Appointment not deleted!'
   def destroy
-    @appointment = current_user.appointments.find(params[:id])
+    authorize! :destroy, Appointment
+    @appointment = Appointment.find_by(id: params[:id])
     if @appointment.destroy
       render json: { message: 'Appointment deleted successfully!' }, status: :ok
     else
-      render json: { error: @appointment.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: 'Failed to delete the appointment.' }, status: :unprocessable_entity
     end
   end
 
