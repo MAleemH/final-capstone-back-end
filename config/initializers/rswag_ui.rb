@@ -10,7 +10,7 @@ Rswag::Ui.configure do |c|
   if Rails.env.production?
     c.swagger_endpoint '/api-docs/v1/schema_swagger_production.json', 'API V1 Docs'
   else
-    c.swagger_endpoint '/api-docs/v1/schema_swagger_local.json.json', 'API V1 Docs'
+    c.swagger_endpoint '/api-docs/v1/schema_swagger_local.json', 'API V1 Docs'
   end
 
   # Add Basic Auth in case your API is private
