@@ -1,5 +1,9 @@
 class Api::V1::SessionsController < Devise::SessionsController
+  skip_before_action :verify_signed_out_user, only: :destroy
+  include ActionController::MimeResponds
+  include ActionController::ImplicitRender
   respond_to :json
+
   # POST /api/v1/sign_in
   api :POST, '/v1/users/sign_in', 'Sign in user'
   param :user, Hash, desc: 'User info', required: true do
@@ -30,7 +34,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     token = request.headers['Authorization'].to_s.gsub('Bearer ', '')
     user = User.find_by(authentication_token: token)
 
-    if user
+    if user.present?
       user.clear_jwt_token
       user.authentication_token = nil
       render json: { message: 'Logged out successfully' }, status: :ok
