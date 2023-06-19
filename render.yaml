@@ -1,18 +1,19 @@
 databases:
-  - name: therapist-db
-    databaseName: therapist_db
-    user: therapist_db_user
+  - name: postgres
+    ipAllowList: []
+    databaseName: counseling_app
+    user: counseling_app
 
 services:
   - type: web
-    name: therapist-api
-    runtime: ruby
-    buildCommand: "./render-build.sh"
+    name: Counseling app
+    env: ruby
+    buildCommand: "./counseling_build.sh"
     startCommand: "bundle exec rails s"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: therapist-db
+          name: postgres
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
