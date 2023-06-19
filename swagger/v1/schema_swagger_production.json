@@ -1,0 +1,589 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Counseling API",
+    "description": "\n<p>The Counseling API allows clients to create therapist profiles and schedul appointments with their preferred therapists</p>\n&copy; 2023 zewdu erkyhun, Muhammad Aleem, Fitz Gerald, Emeka Emmanuel and Choice Osobor",
+    "version": "1.0",
+    "x-copyright": "&copy; 2023 zewdu erkyhun, Muhammad Aleem, Fitz Gerald, Emeka Emmanuel and Choice Osobor"
+  },
+  "basePath": "/api",
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/v1/users/{user_id}/appointments": {
+      "get": {
+        "tags": [
+          "appointments"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_v1_users_user_id_appointments",
+        "summary": "Get all appointments of the current user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested login user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Appointments not found!"
+          }
+        },
+        "description": ""
+      },
+      "post": {
+        "tags": [
+          "appointments"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "post_v1_users_user_id_appointments",
+        "summary": "Create appointment for the current user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "User id"
+          },
+          {
+            "name": "appointment[user_id]",
+            "type": "number",
+            "in": "formData",
+            "required": true,
+            "description": "User id"
+          },
+          {
+            "name": "appointment[date]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "Appointment date"
+          },
+          {
+            "name": "appointment[therapist_id]",
+            "type": "number",
+            "in": "formData",
+            "required": true,
+            "description": "Therapist id"
+          },
+          {
+            "name": "appointment[status]",
+            "type": "string",
+            "in": "formData",
+            "default": "scheduled",
+            "description": "Appointment status"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Appointment not created!"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users/{user_id}/appointments/{id}": {
+      "get": {
+        "tags": [
+          "appointments"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_v1_users_user_id_appointments_id",
+        "summary": "Get appointment of the current user",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested appointment"
+          },
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested login user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Appointment not found!"
+          }
+        },
+        "description": ""
+      },
+      "delete": {
+        "tags": [
+          "appointments"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "delete_v1_users_user_id_appointments_id",
+        "summary": "Delete appointment of the current user",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested appointment"
+          },
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested login user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Appointment not deleted!"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users/password": {
+      "put": {
+        "tags": [
+          "passwords"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "put_v1_users_password",
+        "summary": "Update user password",
+        "parameters": [
+          {
+            "name": "user[password_confirmation]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User password confirmation"
+          },
+          {
+            "name": "user[email]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User email"
+          },
+          {
+            "name": "user[password]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User password"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Password not updated!"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users": {
+      "post": {
+        "tags": [
+          "registrations"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "post_v1_users",
+        "summary": "Create a new user",
+        "parameters": [
+          {
+            "name": "user[password_confirmation]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User password confirmation"
+          },
+          {
+            "name": "user[email]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User email"
+          },
+          {
+            "name": "user[password]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User password"
+          },
+          {
+            "name": "user[role]",
+            "type": "string",
+            "in": "formData",
+            "default": "client",
+            "description": "User role"
+          },
+          {
+            "name": "user[name]",
+            "type": "string",
+            "in": "formData",
+            "default": "name",
+            "description": "User name"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not created!"
+          }
+        },
+        "description": ""
+      },
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_v1_users",
+        "summary": "Get all users",
+        "parameters": [
+
+        ],
+        "responses": {
+          "404": {
+            "description": "Users not found!"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users/sign_in": {
+      "post": {
+        "tags": [
+          "sessions"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "post_v1_users_sign_in",
+        "summary": "Sign in user",
+        "parameters": [
+          {
+            "name": "user[email]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User email"
+          },
+          {
+            "name": "user[password]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "User password"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Invalid email or password"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users/sign_out": {
+      "delete": {
+        "tags": [
+          "sessions"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "delete_v1_users_sign_out",
+        "summary": "Sign out user",
+        "parameters": [
+
+        ],
+        "responses": {
+          "422": {
+            "description": "Invalid token"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users/{user_id}/therapists": {
+      "get": {
+        "tags": [
+          "therapists"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_v1_users_user_id_therapists",
+        "summary": "Get all therapists for current user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested login user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Therapists not found!"
+          }
+        },
+        "description": ""
+      },
+      "post": {
+        "tags": [
+          "therapists"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "post_v1_users_user_id_therapists",
+        "summary": "Create a new therapist by current user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "User id"
+          },
+          {
+            "name": "therapist[specialization]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "Therapist specialization"
+          },
+          {
+            "name": "therapist[phone]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "Therapist phone"
+          },
+          {
+            "name": "therapist[photo]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "Therapist photo"
+          },
+          {
+            "name": "therapist[address]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "Therapist address"
+          },
+          {
+            "name": "therapist[name]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "Therapist name"
+          },
+          {
+            "name": "therapist[email]",
+            "type": "string",
+            "in": "formData",
+            "required": true,
+            "description": "Therapist email"
+          },
+          {
+            "name": "therapist[availability]",
+            "type": "boolean",
+            "in": "formData",
+            "default": true,
+            "description": "Therapist availability"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Therapist not created!"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users/{user_id}/therapists/{id}": {
+      "get": {
+        "tags": [
+          "therapists"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_v1_users_user_id_therapists_id",
+        "summary": "Get requested therapist for current user",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested therapist"
+          },
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested login user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Therapist not found!"
+          }
+        },
+        "description": ""
+      },
+      "delete": {
+        "tags": [
+          "therapists"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "delete_v1_users_user_id_therapists_id",
+        "summary": "Delete therapist by id",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested therapist"
+          },
+          {
+            "name": "user_id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested login user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Therapist not deleted!"
+          }
+        },
+        "description": ""
+      }
+    },
+    "/v1/users/{id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_v1_users_id",
+        "summary": "Get user with id",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found!"
+          }
+        },
+        "description": ""
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "delete_v1_users_id",
+        "summary": "Delete user by id",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true,
+            "description": "id of the requested user"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found!"
+          }
+        },
+        "description": ""
+      }
+    }
+  },
+  "definitions": {
+  },
+  "schemes": [
+    "https"
+  ],
+  "tags": [
+
+  ],
+  "securityDefinitions": {
+    "BearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "host": [
+    "https://counseling-app.onrender.com"
+  ]
+}
