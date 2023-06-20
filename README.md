@@ -41,7 +41,7 @@
 - <a href="https://www.postgresql.org/">Postgresql</a>
 - <a href="https://rspec.info/">Rspec</a>
 
-### :rocket: Live Demo <a name="live-demo"></a>
+### :rocket: Live API Demo <a name="live-demo"></a>
 
   - <a href="https://counseling-app.onrender.com/api-docs/index.html">Live Link</a>
 
@@ -86,6 +86,9 @@ Example command:
 ```sh
   cd final-capstone-back-end
   bundle install (install all dependencies)
+  rails db:create (to create database)
+  rails db:migrate (to migrate tables)
+  rails db:seed (to seed data )
 
 ```
 
