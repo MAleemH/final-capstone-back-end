@@ -32,7 +32,7 @@ class ApplicationController < ActionController::API
   end
 
   def decode_token(token)
-    @decoded_token = JWT.decode(token, ENV.fetch('SECRET_KEY_BASE', nil), true, algorithm: 'HS256').first
+    @decoded_token = JWT.decode(token, ENV.fetch('JWT_SECRET', nil), true, algorithm: 'HS256').first
   end
 
   def revoked_token?(token)

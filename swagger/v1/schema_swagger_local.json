@@ -566,7 +566,6 @@
   "definitions": {
   },
   "schemes": [
-    "https",
     "http"
   ],
   "tags": [
@@ -584,7 +583,7 @@
       "BearerAuth": []
     }
   ],
-  "host":
-  "localhost:3000"
-
+  "host": [
+    "localhost:3000"
+  ]
 }
