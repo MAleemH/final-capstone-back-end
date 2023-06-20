@@ -29,9 +29,8 @@
 
 ## :camera: screenshots <a name="screenshots"></a>
 
-  <img src="app/assets/images/mobile_final.png" alt="">
-
-  <img src="app/assets/images/erd_diagram.png" alt="">
+  <img src="app/images/erd.png" alt="">
+  <img src="app/images/api.png" alt="">
 
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -44,12 +43,16 @@
 
 ### :rocket: Live Demo <a name="live-demo"></a>
 
-  - <a href="">Live Link</a>
+  - <a href="https://counseling-app.onrender.com/api-docs/index.html">Live Link</a>
 
 ### Key Features <a name="key-features"></a>
 
-- [x] User can create an account
-
+- [x] Create user based on role
+- [x] Create therapist profile and view all therapists
+- [x] Create appointment and view all appointments
+- [x] Authentication  using JWT
+- [x] Authorization using cancan
+- [x] Unit testing using rspec
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -163,7 +166,8 @@ Give a ⭐️ if you like this project!
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-- <p> we would like to thank microverse community for the support and guidance</p>
+-  We would like to thank microverse community for the support and guidance, Thank you [Murat Korkmaz](https://www.behance.net/muratk)  on Behance for the Awesome Design Template.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

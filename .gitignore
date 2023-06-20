@@ -29,4 +29,3 @@
 /config/master.key
 
 # Ignore env files which may contain sensitive data.
-.env
