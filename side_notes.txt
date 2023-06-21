@@ -1,0 +1,21 @@
+june 8
+gem 'rack-cors', require: 'rack/cors'
+gem 'rswag'
+gem 'cancancan'
+em 'dotenv-rails', groups: %i[development test]
+gem 'rails-controller-testing'
+gem 'capybara'
+gem 'rspec-rails', '>= 3.9.0'
+gem 'selenium-webdriver'
+gem 'webdrivers'
+gem "rswag-specs"
+
+june 8
+
+june 13
+
+gem 'devise'
+gem 'jwt'
+gem 'devise-jwt'
+gem 'faker'
+june 13
