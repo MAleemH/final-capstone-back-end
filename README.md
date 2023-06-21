@@ -4,6 +4,7 @@
 
 - [📖 About the Project](#about-project)
   - [:camera: screenshots](#screenshots)
+  - [:camera: Kanban board](#screenshots)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
@@ -24,6 +25,19 @@
 
 > The Counseling API allows clients to create therapist profiles and schedule appointments with their preferred therapists.
 
+## 🚀 kanban board <a name="live-demo"></a>
+<div > 
+ 
+  <br/>
+  
+<img src="./app/images/kanban.jpg" alt="coin_image"  >
+  <br/>
+</div> 
+  <br/>
+
+- [kanban board Link](https://github.com/users/MAleemH/projects/5) 
+
+- We are a team of five members.
 ### Frontend Repository
   <a href="https://github.com/MAleemH/final-capstone-front-end">Final capstone front end</a>
 
